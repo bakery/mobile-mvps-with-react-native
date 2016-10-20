@@ -4,13 +4,13 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>Mobile MVPs with React Native</title>
+		<link rel="shortcut icon" href="http://blog.thebakery.io/favicon.ico">
 
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css">
+		<link rel="stylesheet" href="css/theme/white.css">
 
-		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+		<link rel="shortcut icon" href="http://blog.thebakery.io/favicon.png">
 
 		<!-- Printing and PDF exports -->
 		<script>
@@ -20,12 +20,217 @@
 			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
 			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
+
+		<style type="text/css">
+			img {
+				border: none !important;
+			}
+		</style>
 	</head>
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section data-markdown>
+					## Mobile MVPs with React Native
+
+					Philip // The Bakery - [@bakeryhq](http://twitter.com/bakeryhq)
+				</section>
+
+				<section>
+					<section data-markdown>
+						### MVP
+
+						> In product development, the minimum viable product (MVP) is a product with just enough features to gather validated learning about the product and its continued development.
+
+						source: [Wikipedia](https://en.wikipedia.org/wiki/Minimum_viable_product)
+					</section>
+
+					<section data-markdown>
+						![MVP](images/mvp.png)
+					</section>					
+				</section>
+
+				<section>
+					<section data-markdown>
+						### React Native (RN)
+
+						- ~~web page inside native container~~
+						- ~~standard React components plugged into native containers~~
+						- React component model
+						- Native bridge
+						- Platform specific native components
+					</section>
+
+					<section data-markdown>
+						![React Native Architecture overiew](images/rn-arch-overview.png)
+						
+						source: [React Native @ Airbnb](https://speakerdeck.com/felipecsl/react-native-at-airbnb)
+					</section>
+
+					<section data-markdown>
+						![React Native Execution model](images/rn-execution.png)
+						
+						source: [React Native @ Airbnb](https://speakerdeck.com/felipecsl/react-native-at-airbnb)
+					</section>
+
+					<section data-markdown>
+						### RN: What's inside
+
+						- basic components for Android and iOS
+						- networking stack
+						- access to native device API
+						- utility for connecting your own native components
+						- custom bundler (not webpack) + hot reload
+						- styling using js (flexbox + standard jazz)
+					</section>
+
+					<section>
+						<script src="https://gist.github.com/callmephilip/c88f2616074050d0724525a39ee2c668.js"></script>
+					</section>					
+				</section>
+
+				<section data-markdown>
+					### RN for MVPs
+
+					- development speed ++
+					- 2 platforms at a time
+					- js everywhere
+				</section>
+
+				<section>
+					<section data-markdown>
+						### Lessons learned
+					</section>
+
+					<section data-markdown>
+						### TodoMVC
+						![TodoMVC](images/todomvc.png)
+					</section>
+
+					<section data-markdown>
+						### Pixelinho
+						![TodoMVC](images/pixelinho.png)
+					</section>
+
+					<section data-markdown>
+						### Pokemon Maps
+						![TodoMVC](images/pokemon.png)
+					</section>					
+				</section>
+
+				<section>
+					<section data-markdown>
+						### Our stack
+						![TodoMVC](images/stack.png)
+					</section>
+
+					<section data-markdown>
+						### Generators
+
+						- initial scaffolding
+						- creating new components/containers/reducers/models/sagas etc
+						- ! use them past initial scaffolding
+					</section>
+
+					<section>
+						<img src="images/initial-project.png">					
+					</section>
+
+					<section data-markdown>
+						### Type less
+
+						![Sample generator output](images/generator-out.png)
+					</section>					
+				</section>
+
+				<section>
+					<section data-markdown>
+						### Server
+
+						- collocate app and server for better development flow
+						- make it easy to run the server so everybody can do it
+						- use Parse Server for menial stuff
+						- GraphQL for defining common language between app and server 
+					</section>
+
+					<section data-markdown>
+						![App and server code living together](images/sample-repo.png)
+					</section>
+
+					<section data-markdown>
+						### Parse Server + Dashboard
+
+						![Parse Dashboard](images/parse-dashboard.png)
+
+						[Parse Platform on Github](https://github.com/ParsePlatform)
+					</section>
+
+					<section>
+						<h3>GraphQL</h3>
+						<video autoplay="" loop="" playsinline="">
+	            <source src="http://graphql.org/img/graphiql.mp4?x" type="video/mp4">
+	          </video>
+	          <p>source: <a href="http://graphql.org/">graphql.org</a></p>
+					</section>
+				</section>
+
+				<section>
+					<section data-markdown>
+						### Ship all the time
+
+						- binary releases with [Fastlane](https://fastlane.tools/)
+						- js bundles with [Codepush](https://microsoft.github.io/code-push/)
+					</section>
+					<section data-markdown>
+						### Fastlane
+
+						![Fastlane](images/fastlane.png)
+					</section>
+					<section>
+						<script src="https://gist.github.com/callmephilip/8b777a712267faf10aea6af5fe5457cf.js"></script>
+					</section>
+					<section data-markdown>
+						### Codepush
+
+						> code-push release-react MyApp ios
+					</section>
+				</section>
+
+				<section>
+					<section data-background-image="images/ci-everything.jpg" data-background-size="500px 355px"></section>
+					<section data-markdown>
+						![Bitrise workflow](images/bitrise-workflow.png)
+					</section>
+					<section data-markdown>
+						![Github bot commit message](images/github-bot-commit-message.png)
+					</section>
+					<section data-markdown>
+						![Test flight](images/testflight.png)
+					</section>
+				</section>
+
+				<section data-markdown>
+					### Recap
+
+					- type less, do more
+					- keep your server close
+					- ship often
+					- automate all the chores (CI)
+				</section>
+
+				<section data-markdown>
+					### Getting there 
+
+					- [Pepperoni](http://getpepperoni.com/)
+					- [Snowflake](https://github.com/bartonhammond/snowflake)
+					- [Ignite](https://github.com/infinitered/ignite)
+					- [🍰 Baker](http://baker.thebakery.io/)
+					
+				</section>
+
+				<section data-markdown>
+					### Thank you 🙇
+				</section>
 			</div>
 		</div>
 
